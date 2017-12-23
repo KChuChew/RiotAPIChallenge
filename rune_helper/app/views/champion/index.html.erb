@@ -2,18 +2,20 @@ hello! <br>
 
 	<% if @champ_data.nil? %>
 		<% @response = HTTParty.get(@url) %>
-<<<<<<< Updated upstream
-		<% @response.header %>
-=======
-		<!--% puts @response %-->
+
+		<!--% @champ_data = @response.parsed_response["data"] %-->
+
+		<% puts @response %>
+		<% puts @url %>
+
 		<%= @response.header %>
->>>>>>> Stashed changes
 	<% end %>
 	
 	<% @champ_data = @response.parsed_response["data"] %>
 	<% @champ_data.each do |champion| %>
 		<li>
-			<%= link_to "Champion Page", champ_page_path %>
+			<!--%= link_to 'Rune Page', runes_path(champion[0]) %-->
+			<%= link_to ''
 			<%= champion[0] %>
 			<%= champion[1] %>
 		</li>
