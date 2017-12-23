@@ -7,7 +7,7 @@ class ChampionController < ApplicationController
 		@response = nil
 	end
 
-	def rune_page
-		@runes = 'dank'
+	def show 
+		@champ_name = params[:id]
 	end
 end
