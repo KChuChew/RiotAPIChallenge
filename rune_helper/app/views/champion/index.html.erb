@@ -2,18 +2,14 @@ hello! <br>
 
 	<% if @champ_data.nil? %>
 		<% @response = HTTParty.get(@url) %>
-		<% @response.header %>
+		<% @champ_data = @response.parsed_response["data"] %>
 	<% end %>
 	
-	<% @champ_data = @response.parsed_response["data"] %>
 	<% @champ_data.each do |champion| %>
 		<li>
-			<%= champion[0] %>
-			<%= champion[1] %>
+			<%= link_to champion[0].to_s, champion_path(champion[0]) %>
 		</li>
 	<% end %>
 
 Go to Runes:
 <button type="button" class="btn btn-primary">Runes</button>
-	
-
