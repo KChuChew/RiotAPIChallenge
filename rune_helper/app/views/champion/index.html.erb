@@ -1,0 +1,17 @@
+hello! <br>
+	<%= @response.header %>
+
+	<% if @champ_data.nil? %>
+		<% @response = HTTParty.get(@url) %>
+	<% end %>
+	
+	<% @champ_data = @response.parsed_response["data"] %>
+	<% @champ_data.each do |champion| %>
+		<li>
+			<%= champion[0] %>
+			<%= champion[1] %>
+		</li>
+	<% end %>
+
+	
+
