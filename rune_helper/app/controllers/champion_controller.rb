@@ -4,4 +4,8 @@ class ChampionController < ApplicationController
 		@champ_data = nil 
 		@response = nil
 	end
+
+	def champ_page
+
+	end
 end
