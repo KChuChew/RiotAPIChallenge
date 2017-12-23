@@ -1,8 +1,8 @@
 hello! <br>
-	<%= @response.header %>
 
 	<% if @champ_data.nil? %>
 		<% @response = HTTParty.get(@url) %>
+		<% @response.header %>
 	<% end %>
 	
 	<% @champ_data = @response.parsed_response["data"] %>
@@ -13,5 +13,7 @@ hello! <br>
 		</li>
 	<% end %>
 
+Go to Runes:
+<button type="button" class="btn btn-primary">Runes</button>
 	
 
