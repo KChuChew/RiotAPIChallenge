@@ -3,6 +3,7 @@ hello! <br>
 	<% if @champ_data.nil? %>
 		<% @response = HTTParty.get(@url) %>
 		<% @champ_data = @response.parsed_response["data"] %>
+		<% puts 'dank' %>
 	<% end %>
 	
 	<% @champ_data.each do |champion| %>

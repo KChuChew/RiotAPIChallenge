@@ -1,0 +1,10 @@
+hello! <br>
+
+	<% if @champ_data_b.nil? %>
+		<% puts 'dank' %>
+		<% @ggresponse = HTTParty.get(@url_b) %>
+		<!--% @champ_data_b = @ggresponse.parsed_response["elo"] %-->
+		<% @champ_data_b = @ggresponse.parsed_response[0]["hashes"]["runehash"]["highestWinrate"]["hash"] %>
+		<!--% puts @ggresponse[0]['elo'] %-->
+		<% puts @champ_data_b %>
+	<% end %>
