@@ -1,10 +1,30 @@
 class ChampionController < ApplicationController
-	def index
-		key1 = 'RGAPI-91cb05bc-76d3-46f1-bcdb-ffea08832129'
+	class << self 
+		attr_accessor :CHAMPION_STATIC_DATA
+	end
+
+	def get_champ_static_data
+		key1 = 'RGAPI-1937462f-22d9-4d7b-85d9-b82765d2b73c'
 		key2 = 'RGAPI-b633a05e-8f92-4376-a914-84a530c8a71c'
-		@url = 'https://na1.api.riotgames.com/lol/static-data/v3/champions?locale=en_US&dataById=false&api_key=' + key1
-		@champ_data = nil 
-		@response = nil
+		@url = 'https://na1.api.riotgames.com/lol/static-data/v3/champions?tags=image&locale=en_US&dataById=false&api_key=' + key1
+		response = HTTParty.get(@url)
+		self.class.CHAMPION_STATIC_DATA = response.parsed_response["data"]
+		puts response.header
+		return self.class.CHAMPION_STATIC_DATA
+	end
+
+	def get_data_for(champion)
+		return self.class.CHAMPION_STATIC_DATA[champion]
+	end
+
+	def index
+		if self.class.CHAMPION_STATIC_DATA.nil? 
+			puts "sending request"
+			@champ_data = self.get_champ_static_data()
+		else 
+			puts "not sending request"
+			@champ_data = self.class.CHAMPION_STATIC_DATA
+		end
 	end
 
 	def show 
