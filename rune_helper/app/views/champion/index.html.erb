@@ -1,7 +1,8 @@
 <% @champ_data.each do |champion| %>
 	<li>
-		<%= link_to champion[0], champion_path(champion[0]) %>
+		<%= link_to champion[0], champion_path(champion[0], champion[1]["id"]) %>
 		<img src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/<%=champion[1]["image"]["full"] %>">
+		<!--% puts champion[1]["id"]%-->
 	</li>
 <% end %>
 

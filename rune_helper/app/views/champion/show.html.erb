@@ -1,2 +1,10 @@
 This is the page for <%= @champ_name %>!
 <%= @champ_info %>
+Dank cuks <%= @rune_data%>
+
+<% @rune_data.each_index do |rune_data| %>
+	<li>
+		<% puts rune_data %>
+		<% puts "dank" %>
+	</li>
+<% end %>
